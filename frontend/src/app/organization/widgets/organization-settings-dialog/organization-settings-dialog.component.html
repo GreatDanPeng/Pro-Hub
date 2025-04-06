@@ -1,0 +1,119 @@
+<div class="org-settings-dialog">
+  <h1>Edit Organization</h1>
+
+  <div class="form-group">
+    <label>Organization Name*</label>
+    <div class="input-container">
+      <input
+        type="text"
+        [(ngModel)]="org_name"
+        placeholder="Enter organization name"
+        style="width: 480px;"
+        name="organizationName" 
+        readonly
+        />
+      <!-- <button class="clear-button" (click)="org_name=''">×</button> -->
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Slug*</label>
+      <div class="input-container">
+        <input
+          type="text"
+          [(ngModel)]="organization.slug"
+          placeholder="Lowercase and dashes only"
+          style="width: 230px;"
+          name="slug" />
+        <button class="clear-button" (click)="organization.slug=''">×</button>
+      </div>
+      <div class="helper-text">Lowercase letters and dashes only.</div>
+    </div>
+
+    <div class="form-group">
+      <label>Shorthand*</label>
+      <div class="input-container">
+        <input 
+          type="text"
+          [(ngModel)]="shortname"
+          placeholder="Enter shorthand"
+          style="width: 230px;"
+          name="shorthand"
+          (input)="updateCharCount()"
+          maxlength="10">
+        <!-- Optional: to limit the input length -->
+        <button class="clear-button" (click)="shortname=''">×</button>
+      </div>
+      <div class="char-count">{{ shortname.length }}/10</div>
+    </div>
+    
+  </div>
+
+  <div class="form-group">
+    <label>Logo Link*</label>
+    <div class="input-container">
+      <input
+        type="text"
+        [(ngModel)]="organization.logo"
+        style="width: 480px;"
+        placeholder="Input the link to the logo"
+        name="logoLink" />
+      <button class="clear-button" (click)="organization.logo=''">×</button>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <div class="setting-header">Make Organization Public</div>
+    <div class="setting-description">
+      By making your organization public, anyone can join your organization, as
+      well as register for any events hosted by your organization.
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <input
+          type="checkbox"
+          id="publicToggle"
+          [(ngModel)]="isPublic"
+          name="isPublic" />
+        <label for="publicToggle" class="toggle-label"></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <div class="setting-header">Requires Application</div>
+    <div class="setting-description">
+      By enabling this, anyone who wishes to join must hand in application that
+      requires approval in order to join
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <input
+          type="checkbox"
+          id="requiresApplicationToggle"
+          [(ngModel)]="requiresApplication"
+          name="requiresApplication" />
+        <label for="requiresApplicationToggle" class="toggle-label"></label>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="warningMessage" style="color: red; margin-bottom: 10px;">
+    {{ warningMessage }}
+  </div>
+
+  <div class="management-actions">
+    <button class="action-button" (click)="openAddMemberDialog()">
+      Add/Delete Member
+    </button>
+    <button class="action-button" (click)="viewApplications()">
+      Applications
+    </button>
+  </div>
+
+  <div class="dialog-actions">
+    <button class="reset-button" (click)="onCancel()">Cancel</button>
+    <button class="save-button" (click)="onSave()">Save</button>
+  </div>
+</div>

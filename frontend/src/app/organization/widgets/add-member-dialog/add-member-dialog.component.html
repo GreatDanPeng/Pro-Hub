@@ -1,0 +1,42 @@
+<div class="add-member-dialog" role="dialog" aria-labelledby="add-member-title">
+  <h1 id="add-member-title">Add/Delete Member</h1>
+  <form (submit)="onConfirm()" aria-describedby="add-member-desc">
+    <div id="add-member-desc" class="form-group">
+      <label for="onyen">Onyen</label>
+      <input
+        type="text"
+        id="onyen"
+        [(ngModel)]="onyen"
+        name="onyen"
+        placeholder="Enter onyen"
+        required
+        aria-required="true"
+      />
+    </div>
+    <div class="dialog-actions">
+      <button
+        type="button"
+        class="cancel-button"
+        (click)="onCancel()"
+        aria-label="Cancel adding a member"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="confirm-button"
+        aria-label="Confirm adding a member"
+      >
+        Add
+      </button>
+      <button
+        type="button"
+        class="delete-button"
+        (click)="onDelete()"
+        aria-label="Delete a member"
+      >
+        Delete
+      </button>
+    </div>
+  </form>
+</div>

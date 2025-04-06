@@ -1,0 +1,170 @@
+@if (organization) {
+<mat-pane>
+  <mat-card-header>
+    <div class="header-row">
+      <img mat-card-avatar src="{{ organization.logo }}" />
+      <mat-card-title>{{ organization.name }}</mat-card-title>
+    </div>
+    <div class="links-row">
+      @if (organization.website !== '') {
+      <div class="row">
+        <mat-icon class="link-icons secondary-icon">link</mat-icon>
+        <p>
+          <a
+            class="font-secondary"
+            [href]="organization.website"
+            target="_blank"
+            >Website</a
+          >
+        </p>
+      </div>
+      } @if (organization.email !== '') {
+      <div class="row">
+        <mat-icon class="secondary-icon">mail</mat-icon>
+        <p>
+          <a
+            class="font-secondary"
+            href="mailto:{{ organization.email }}"
+            target="_blank"
+            >Email</a
+          >
+        </p>
+      </div>
+      } @if (organization.instagram !== '') {
+      <div class="row">
+        <mat-icon class="link-icons secondary-icon" svgIcon="instagram" />
+        <p>
+          <a
+            class="font-secondary"
+            [href]="organization.instagram"
+            target="_blank"
+            >Instagram</a
+          >
+        </p>
+      </div>
+      } @if (organization.linked_in !== '') {
+      <div class="row">
+        <mat-icon
+          class="link-icons secondary-icon"
+          id="linkedin-icon"
+          svgIcon="linkedin" />
+        <p>
+          <a
+            class="font-secondary"
+            [href]="organization.linked_in"
+            target="_blank"
+            >LinkedIn</a
+          >
+        </p>
+      </div>
+      } @if (organization.youtube !== '') {
+      <div class="row">
+        <mat-icon class="link-icons secondary-icon" svgIcon="youtube" />
+        <p>
+          <a
+            class="font-secondary"
+            [href]="organization.youtube"
+            target="_blank"
+            >YouTube</a
+          >
+        </p>
+      </div>
+      }
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ organization.long_description || organization.short_description }}</p>
+    @if(eventCreationPermissions) {
+    <mat-divider />
+    }
+    @if(isMemberFlag) {
+      <mat-divider />
+      <h3>Members</h3>
+      <table mat-table [dataSource]="members" class="mat-elevation-z8">
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef> First Name </th>
+          <td mat-cell *matCellDef="let member"> {{ member.first_name }} </td>
+        </ng-container>
+  
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let member"> {{ member.last_name }} </td>
+        </ng-container>
+  
+        <!-- Onyen Column -->
+        <ng-container matColumnDef="onyen">
+          <th mat-header-cell *matHeaderCellDef> Onyen </th>
+          <td mat-cell *matCellDef="let member"> {{ member.onyen }} </td>
+        </ng-container>
+  
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let member"> {{ member.email }} </td>
+        </ng-container>
+  
+        <!-- Pronoun Column -->
+        <ng-container matColumnDef="pronouns">
+          <th mat-header-cell *matHeaderCellDef> Pronouns </th>
+          <td mat-cell *matCellDef="let member"> {{ member.pronouns }} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    }
+    <mat-divider />
+    @if(isMemberFlag && leaders && leaders.length > 0) {
+      <h3>Leaders</h3>
+      <table mat-table [dataSource]="leaders" class="mat-elevation-z8">
+        <!-- First Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef> First Name </th>
+          <td mat-cell *matCellDef="let leader"> {{ leader.first_name }} </td>
+        </ng-container>
+    
+        <!-- Last Name Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let leader"> {{ leader.last_name }} </td>
+        </ng-container>
+    
+        <!-- Onyen Column -->
+        <ng-container matColumnDef="onyen">
+          <th mat-header-cell *matHeaderCellDef> Onyen </th>
+          <td mat-cell *matCellDef="let leader"> {{ leader.onyen }} </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="leaderColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: leaderColumns;"></tr>
+    
+        <!-- No data message -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="3">No leaders found</td>
+        </tr>
+      </table>
+    } @else if(isMemberFlag) {
+      <p>No leaders found for this organization.</p>
+    }
+  </mat-card-content>
+  <mat-card-actions>
+    @if(eventCreationPermissions) {
+    <button
+      mat-stroked-button
+      class="primary-button"
+      [routerLink]="'/events/' + this.organization.slug + '/new/edit'">
+      <mat-icon class="font-primary">calendar_add_on</mat-icon>
+      Create Event
+    </button>
+    <button
+      mat-flat-button
+      class="primary-button"
+      [routerLink]="'/organizations/' + this.organization.slug + '/edit'">
+      Edit
+    </button>
+    }
+  </mat-card-actions>
+</mat-pane>
+}

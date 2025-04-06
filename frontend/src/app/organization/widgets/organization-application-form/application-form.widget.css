@@ -1,0 +1,21 @@
+.application-form {
+    width: 100%;
+  }
+  
+.full-width {
+    width: 100%;
+}
+
+mat-dialog-content {
+    min-width: 500px;
+}
+
+mat-form-field {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.warning-message {
+    color: red;
+    margin-top: 10px;
+}

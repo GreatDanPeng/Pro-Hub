@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Application Form</h2>
+<mat-dialog-content>
+    <form class="application-form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="name" name="name" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>ID</mat-label>
+        <input matInput [(ngModel)]="id" name="id" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Reason to Join</mat-label>
+        <textarea matInput [(ngModel)]="reason" name="reason" required></textarea>
+      </mat-form-field>
+      <div *ngIf="warningMessage" class="warning-message">{{ warningMessage }}</div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>
