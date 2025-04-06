@@ -33,7 +33,7 @@ Our project aims to extend the organization roaster and add the management of me
 
 As a guest, Stewie Student, I want to check the organization details so that I can decide whether applying to this organization.
 
-![image-20241209181835189](./assets/image-20241209181835189.png)
+![image-20241209181835189](./docs/assets/image-20241209181835189.png)
 
 ### Tech Specs
 
@@ -80,7 +80,7 @@ As a guest, Stewie Student, I want to check the organization details so that I c
 
 As an authenticated member, Sally Student, in the `CS+Social Good` organization, I want to see the member roster from organization details page so that I can view other members and their basic information in this organization.
 
-![image-20241209220020357](./assets/image-20241209220020357.png)
+![image-20241209220020357](./docs/assets/image-20241209220020357.png)
 
 ### Tech Specs
 
@@ -133,9 +133,9 @@ In addition to `OrganizationEntity` and `UserEntity`, members can access to `use
 
 As a leader (President), Paul President, in the ACM organization, I want to add other users to ACM so that they can have ACM membership and member-only permissions.
 
-![image-20241209221220062](./assets/image-20241209221220062.png)
+![image-20241209221220062](./docs/assets/image-20241209221220062.png)
 
-![image-20241209222421887](./assets/image-20241209222421887.png)
+![image-20241209222421887](./docs/assets/image-20241209222421887.png)
 
 ### Tech Specs
 
@@ -184,10 +184,10 @@ In addition to `GET /api/organizations/{slug}`, `GET /api/organizations/{slug}/m
 
 #### Original Interface
 
-![image-20241122145640821](./assets/image-20241122145640821.png)
+![image-20241122145640821](./docs/assets/image-20241122145640821.png)
 
 #### Current Interface
 
-![image-20241209222854446](./assets/image-20241209222854446.png)
+![image-20241209222854446](./docs/assets/image-20241209222854446.png)
 
 Rhonda the root is currently not a member of any organization (and thus the `Apply/Join` button, but has leader permission to all organizations (and thus the little gears in each card). Please refer to previous sections for each of these features (both backend and frontend).
